@@ -1,0 +1,15 @@
+{% extends 'different/layout.html' %}
+{% load static %}
+{% block title %} Oops! {% endblock %}
+
+{% block body %}
+
+<div class="mx-auto text-center">
+    <img src="{% static 'different/error.png' %}" alt="oops" id="error-img" class="mx-auto text-center">
+</div>
+<h1 class="text-center fs-3">{{message}}</h1>
+
+
+
+
+{% endblock %}

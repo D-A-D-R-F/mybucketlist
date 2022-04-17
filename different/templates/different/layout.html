@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'different/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+        <div class="container-fluid ">
+          <button class="navbar-toggler mx-auto text-center " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list-nested"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <li class="nav-item">
+              <button class="btn-light btn text-center"data-bs-toggle="modal" data-bs-target="#daily-quote-modal">Daily Quote</button>
+            </li>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%" href="{% url 'index' %}"  ><i class="bi bi-house-door-fill"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%" href="{% url 'bucket_list' %}"  >My Bucket</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%"  href="{% url 'random' %}"   >Random Activities</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%"  href="{% url 'calendar' %}">My Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%"  href="{% url 'connect' %}">Connect</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%"  href="{% url 'share' %}">Share</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+              <a class="nav-link nav-links text-light fw-bold" style="width:100%"  href="{% url 'logout' %}">Logout</a>
+            </li>
+            </ul>
+          </div>
+        </div>
+        
+      </nav>
+
+<div class="modal fade " id="daily-quote-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Daily Quote</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="text-center">We often overlook the good in our lives and focus on the negatives rather than the positives. I feel that a Daily Quote can help us focus on the positives of our lives and definitely 'Makes like a little less ordinary'</p>
+        <br><br>
+
+        <b >Today's quote is :</b>
+        <br><br>
+        <i class="fw-bold text-center" id="quote"></i>
+      </div>
+
+    </div>
+  </div>
+</div>
+      
+     
+      {% else %}
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+        <div class="container-fluid ">
+          <button class="navbar-toggler mx-auto text-center " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list-nested"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%" href="{% url 'index' %}"  ><i class="bi bi-house-door-fill"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%" id="home-nav-link" href="{% url 'login' %}"  >Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-links" style="width:100%" id="about-nav-link" href="{% url 'register' %}"   >Register</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+{% endif %}
+    <main>
+            
+    {% block body %}
+    {% endblock %}
+    </main>
+    <script>
+      var quotes = {
+        0:'When you start each day with a grateful heart , light illuminates from within. Have a great day!' ,
+        1:'Every day is a new beginning. Take a deep breath , smile and start again.' , 
+        2:'Life is a journey with problems to solve and lessons to learn , but most of all Experiences to enjoy... Have a Great Day!' , 
+        3:'Rise up , start fresh and see the bright opportunity in each day!' , 
+        4:'It is never too late to be what you might have been' ,
+        5:'Success is going from failure to failure without losing your enthusiasm. Have a great day!' , 
+        6:'A year from now you may wish you had started today.'
+      }
+      
+      const d = new Date();
+      var day = d.getDay();
+    
+      document.getElementById("quote").innerHTML = `'${quotes[day]}'`
+    
+    
+    </script>
+
+    <script src="{% static 'different/index.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

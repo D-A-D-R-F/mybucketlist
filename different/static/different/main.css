@@ -1,0 +1,188 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color:lavender;
+}
+
+
+.main-home{
+    padding:20px;
+    margin:20px;
+}
+.home_cards{
+    display:inline-block;
+    width: 30rem;
+    margin:20px;
+    background-color: rgba(0, 0, 0, 0.894);
+    color:white;
+
+}
+
+
+
+.inputs{
+    width: 35vw;
+    height:auto;
+    padding:10px;
+    outline:none;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+
+
+}
+
+.inputs-duration{
+    width: 17.5vw;
+    height:auto;
+    padding:10px;
+    outline:none;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+
+
+}
+
+.bucket_cards{
+    display:inline-block;
+    width: 30rem;
+    margin:20px;
+    background-color: lightblue;
+}
+
+.connect_cards{
+    display:inline-block;
+    width: 30rem;
+    margin:20px;
+    background-color: rgba(0, 0, 0, 0.894);
+    color:white
+}
+
+.completed_bucket_cards{
+    display:inline-block;
+    width: 30rem;
+    margin:20px;
+    background-color: rgb(164, 124, 124);
+}
+
+#iframe-videos{
+border-color: black;
+margin:20px;
+background-color: lightblue;
+padding:15px;
+}
+
+#i-frame-map{
+    margin:20px;
+    border-color: black;
+    border-style:double;
+    width:50%;
+    height:auto;
+    border-width:10px;
+    background: lightblue;
+}
+
+#error-img{
+    padding:20px;
+    width:50%;
+    margin:20px;
+
+}
+
+#pending-items{
+    background-color: rgba(0, 0, 0, 0.894);
+    height:auto;
+    padding:20px;
+}
+
+#completed-items{
+    background-color: rgba(0, 0, 0, 0.894);
+    height:auto;
+    padding:20px;
+}
+
+#main-bucket-content{
+    padding:20px;
+    margin:20px;
+}
+
+#content-connect{
+    padding:20px;
+    margin:20px;
+}
+
+#schedule-content{
+    padding:20px;
+    margin:20px;
+}
+
+
+
+
+.content {
+
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .hero {
+    position: relative;
+    background: #333333;
+    color: white;
+    padding:20px;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .hero h2 {
+    position: relative;
+    z-index: 1;
+    font-size: 4.5rem;
+    margin: 0 0 10px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .hero p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    color: white;
+    line-height: 1.4;
+  }
+  
+
+#form-div-share{
+    background: rgba(255, 255, 255, 0.9);
+    padding:20px;
+    margin:20px;
+    width:50%;
+    display: inline-block;
+}
+
+#shared_items{
+    background: rgba(255, 255, 255, 0.9);
+    padding:20px;
+    margin:20px;
+    width:40%;
+    float:right
+}
+
+.main-div-share{
+    background: rgba(255, 255, 255, 0.9);
+    padding:20px;
+    margin:20px;
+    width:90%
+
+}
+#quote{
+    color:#333333
+}
+
+#shared-cards{
+    width:50%;
+    margin:20px;
+    background-color: rgb(182, 194, 199);
+}

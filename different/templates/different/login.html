@@ -1,0 +1,28 @@
+{% extends "different/layout.html" %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<div class="main-home">
+    <h2 class="text-center text-dark">Login</h2>
+
+    {% if message %}
+        <div class="text-center text-dark fw-bold">{{ message }}</div>
+    {% endif %}
+    
+
+    <form action="{% url 'login' %}" method="post" class="mx-auto">
+        {% csrf_token %}
+        <div class="mx-auto text-center" style="width: 50%;margin:20px">
+            <input autofocus class="inputs" type="text" name="username" placeholder="Username" required>
+          </div>
+
+          <div class="mx-auto text-center" style="width: 50%;margin: 20px;">
+            <input class="inputs" type="password"  name="password" placeholder="Password" required>
+          </div>
+
+        <div class="mx-auto text-center">
+            <input class="btn  mx-auto text-center btn-dark " type="submit"  value="Login">
+        </div>
+    </form>
+
+</div>
+{% endblock %}

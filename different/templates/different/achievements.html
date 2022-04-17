@@ -1,0 +1,61 @@
+{% extends 'different/layout.html' %}
+
+{% block title %} Accomplishments {% endblock %}
+
+{% block body %}
+  
+<div class="mx-auto " style="padding: 20px;margin:20px;">
+<h1 class="text-center fs-3">Share your completed tasks activities with other users!</h1>
+
+<div class="me-auto" id="form-div-share">
+    <h1 class="text-center fs-5">Share a completed item from your bucket list</h1>
+    <br><br>
+    <form action="{% url 'share' %}" method="post" class="mx-auto">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <select  name="item-completed" id='item-completed' class="form-control" required >
+                {% for item in items %}
+                <option value="{{item.item}}" >{{item.item}}</option>
+                {% endfor %}
+            </select>
+            <label for="item-completed">Item Completed</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="comment" name="user-comment" placeholder="Comment on your experience." required>
+            <label for="comment">Comment on your experience</label>
+          </div>
+          <br>
+          <input type="submit" value="Share!" class="btn btn-dark">
+    </form>
+</div>
+
+<div class="text-right mr-auto" id="shared_items">
+    <h1 class="text-center fs-5">Items shared by you</h1>
+    <br><br>
+    <ol>
+        {% for i in shared_items %}
+            <li>{{i.completed_item}}</li>
+        {% endfor %}
+    </ol>
+</div>
+
+<div class="main-div-share text-center mx-auto">
+    <h1 class="text-center fs-5">Items shared by other users</h1>
+    <hr style="width:50%" class="mx-auto">
+    <br></br>
+    
+
+    {% for shared in all_shared %}
+    <div class="card text-start mx-auto" id="shared-cards">
+        <div class="card-header text-end">
+          By {{shared.username}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{shared.completed_item}}</h5>
+          <p class="card-text">{{shared.comment}}</p>
+        </div>
+      </div>
+      {% endfor %}
+</div>
+</div>
+{% endblock %}

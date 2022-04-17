@@ -1,0 +1,40 @@
+{% extends 'different/layout.html' %}
+{% load static %}
+{% block title %} Connect with Users! {% endblock %}
+
+{% block body %}
+<div id="content-connect">
+
+<h1 class="text-center fs-4">Connect with users based on your location</h1>
+<br>
+
+<form action="{% url 'connect' %}" method="post" class="mx-auto text-center">
+    {% csrf_token %}
+
+    <input type="text" class="inputs text-center-mx-auto" name="location" placeholder="Your Location (state)" required>
+
+    <br>
+    <br>
+    <input type="email" class="inputs text-center-mx-auto" name="email" placeholder="Email" required >
+
+    <br><br>
+    <input type="submit" value="Search for users!" class="btn btn-dark text-center mx-auto">
+</form>
+<div class="mx-auto text-center">
+    {% for i in common %}
+    <div class="card mx-auto connect_cards">
+        <div class="card-body">
+          <h5 class="card-title">{{i.username}}</h5>
+          <p class="card-text">Location - {{i.location}}</p>
+          <p class="card-text">Email  - {{i.email}}</p>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+<div class="text-center text-danger fw-bold mx-auto">
+  {{message}}
+
+</div>
+{% endblock %}

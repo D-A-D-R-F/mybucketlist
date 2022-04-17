@@ -1,0 +1,47 @@
+{% extends 'different/layout.html' %}
+
+{% block title %} Event Calendar!{% endblock %}
+
+{% block body %}
+<div id="schedule-content">
+<p class="text-center display-5">My Schedule</p>
+
+<h1 class="fw-bold">Hello, {{request.user.username}}</h1>
+<hr style="width:50%">
+<br>
+<h3 class="fs-1 fw-bold text-center">You should</h3>
+<hr style="width:50%" class="mx-auto">
+<div class="card mx-auto text-center" style="width:50%;background-color: lightskyblue;">
+    <div class="card-body fs-3 ">
+        {{random_event}} on {{random_date}} {{month_name}}
+    </div>
+  </div>
+  <br>
+  <p class="text-center fw-bold">Click <a href="https://www.google.com/search?q={{random_event}}" target="_blank">here</a> to see what Google has to say about this topic.</p>
+
+  <h3 class="fs-3 text-center">A few videos on the topic!</h3>
+  <br>
+
+  <div class="mx-auto text-center">
+{% for link in links %}
+  <iframe width="360" height="215" class="mx-auto text-center" src="https://www.youtube.com/embed/{{link}}" title="YouTube video player" frameborder="0" id="iframe-videos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+{% endfor %}
+</div>
+<br>
+<br>
+<h1 class="fs-3 text-center">A Map on the topic , '<span style="color:rgb(1, 40, 54)" class="fw-bold ">{{random_event}}</span>''.</h1>
+</div>
+
+<div class="mx-auto text-center" id="i-frame-map">
+<iframe
+class="mx-auto text-center"
+  width="450"
+  height="250"
+  frameborder="0" style="border:0"
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/search?key={{api_key}}&q={{location}}"
+  allowfullscreen>
+</iframe>
+</div>
+{% endblock %}

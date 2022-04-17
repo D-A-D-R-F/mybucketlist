@@ -1,0 +1,75 @@
+{% extends 'different/layout.html' %}
+
+{% block title %} My Bucket List {% endblock %}
+
+{% block body %}
+<div id="main-bucket-content">
+<p class="text-center display-5">My Bucket List</p>
+
+<form action="{% url 'bucket_list' %}" method="post" class="mx-auto text-center">
+    {% csrf_token %}
+
+    <input type="text" class="inputs text-center-mx-auto" name="bucket_list_input" placeholder="What do you want to do?" required>
+    <br>
+    <br>
+    <select name="category" name="category" class="inputs" required>
+        {% for value in categories %}
+            <option value="{{value}}">Category - {{value}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type="text" class="inputs text-center-mx-auto" name="location-input" placeholder="Location of the event" required>
+
+    <br><br>
+    <p class="text-center mx-auto">
+        <input type="number" class="inputs-duration text-center-mx-auto" name="duration" placeholder="Duration of the event." required>
+        <select name="time-unit" class="inputs-duration" required>
+            <option value="HOURS">HOURS</option>
+            <option value="DAYS">DAYS</option>
+            <option value="MONTHS">MONTHS</option>
+        </select>
+    </p>
+    <br>
+    <input type="submit" value="Add to my bucket!" class="btn btn-dark text-center mx-auto">
+</form>
+</div>
+<br><br>
+
+<div id="pending-items">
+  <h1 class="fs-3 text-center text-light">Pending Items</h1>
+
+<div class="mx-auto text-center">
+{% for bucket in buckets %}
+<div class="card mx-auto bucket_cards">
+    <div class="card-body">
+      <h5 class="card-title">{{bucket.item}}</h5>
+      <p class="card-text">Category - {{bucket.category}}</p>
+      <p class="card-text">Duration (Days) - {{bucket.duration}}</p>
+    <form action="{% url 'completed' bucket.item %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Mark as Done!" class="btn text-light  text-center" style="background-color: rgb(53, 53, 100);">
+    </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+<!--Completed Buckets-->
+<br>
+<div id="completed-items">
+<h1 class="fs-3 text-center text-light">Completed Items</h1>
+
+<div class="mx-auto text-center">
+    {% for bucket in completed_items %}
+    <div class="card mx-auto completed_bucket_cards">
+        <div class="card-body">
+          <h5 class="card-title">{{bucket.item}}</h5>
+          <p class="card-text">Category - {{bucket.category}}</p>
+          <p class="card-text">Duration (Days) - {{bucket.duration}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}
